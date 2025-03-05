@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { verifyToken } from "../utils/auth";
 
-const AuthComponent = () => {
+const AuthRegister = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
@@ -17,10 +17,9 @@ const AuthComponent = () => {
     checkAuth();
   }, []);
 
-  if (isAuthenticated === null) return <div>Loading...</div>; // Prevents flicker
+  if (isAuthenticated === null) return <div>Loading...</div>;
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
+  return isAuthenticated ? <Navigate to="/home" /> : <Outlet />;
 };
 
-export default AuthComponent;
-
+export default AuthRegister;
